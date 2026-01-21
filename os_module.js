@@ -23,3 +23,6 @@ model: ${model} MB
             console.error('Error writing to file:', err);
         }
     })
+
+
+    
