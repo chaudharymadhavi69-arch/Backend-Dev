@@ -10,10 +10,10 @@ app.get("/users",(req,res)=>{
 
 app.get("/users/:id",(req,res)=>{
     const userId= req.params.id
-     res.send("you are requesting for user:${userID}")
+     res.send(`you are requesting for user:${userId}`)
 })
 
 app.listen(PORT, ()=>{
-    console.log('server is running on port:${PORT}')
+    console.log(`server is running on port:${PORT}`)
 })
 
