@@ -43,5 +43,14 @@ app.get('/students/branch/:branch', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`server is running on port:${PORT}`);
+  console.log(`server is running on port:${PORT} (pid: ${process.pid})`);
+});
+
+// Diagnostic handlers to capture unexpected exits or errors
+process.on('exit', (code) => console.log('Process exit event, code:', code));
+process.on('uncaughtException', (err) => {
+  console.error('uncaughtException:', err);
+});
+process.on('unhandledRejection', (reason) => {
+  console.error('unhandledRejection:', reason);
 });
