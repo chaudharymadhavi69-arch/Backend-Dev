@@ -1,0 +1,24 @@
+Exercise 1: Request Logging Middleware
+📌 Goal:
+
+Log request details into a file
+
+✅ Code:
+import fs from "fs";
+
+export const logger = (req, res, next) => {
+  const start = Date.now();
+
+  res.on("finish", () => {
+    const log = `${new Date().toISOString()} | ${req.method} | ${req.originalUrl} | ${res.statusCode} | ${Date.now() - start}ms\n`;
+
+    fs.appendFile("logs.txt", log, (err) => {
+      if (err) console.error("Log error:", err);
+    });
+  });
+
+  next();
+};
+
+📌 Use:
+app.use(logger);
